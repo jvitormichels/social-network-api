@@ -17,6 +17,7 @@ Comandos para rodar e instruções
 - [ ] Mudança de definição
 - [ ] Breaking change (alteração que pode mudar o funcionamento da ferramenta de maneira significativa)
 - [ ] Requer atualização de documentação
+- [ ] Documentação
 
 **Checklist:**
 
