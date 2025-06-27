@@ -1,5 +1,5 @@
 docker:
-	docker-compose up
+	./run.sh
 
 bash:
 	docker-compose run web bash

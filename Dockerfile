@@ -1,17 +1,17 @@
 FROM ruby:3.4.4
 
-RUN apt-get update -qq && \
-    apt-get install -y build-essential libpq-dev
+ENV INSTALL_PATH=/app
 
-WORKDIR /app
+RUN apt-get update -qq && \
+    apt-get install -y build-essential libpq-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p $INSTALL_PATH
+WORKDIR $INSTALL_PATH
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle install
+RUN gem install bundler && bundle install
 
 COPY . .
-
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
